@@ -24,6 +24,7 @@ import me.libraryaddict.Hungergames.Types.HungergamesApi;
 public class Herobrine extends AbilityListener {
     private transient HashMap<String, Long> damagers = new HashMap<String, Long>();
     private transient HashMap<String, Long> cooldown = new HashMap<String, Long>();
+    public int cooldownTime = 120;
 
     @EventHandler
     public void onDamage(EntityDamageByEntityEvent event) {
@@ -83,7 +84,7 @@ public class Herobrine extends AbilityListener {
                 lastUsed = cooldown.get(p.getName());
             if (lastUsed + (120000) > System.currentTimeMillis()) {
                 p.sendMessage(ChatColor.BLUE + "You may not use that yet! Wait "
-                        + (((lastUsed + 120000) - System.currentTimeMillis()) / 1000) + " seconds!");
+                        + (((lastUsed + (cooldownTime * 1000)) - System.currentTimeMillis()) / 1000) + " seconds!");
             } else {
                 if (damagers.get(p.getName()) + 30000 > System.currentTimeMillis()) {
                     cooldown.put(p.getName(), System.currentTimeMillis());
