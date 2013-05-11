@@ -9,8 +9,8 @@ import me.libraryaddict.Hungergames.Interfaces.Disableable;
 import me.libraryaddict.Hungergames.Types.AbilityListener;
 
 public class Bourne extends AbilityListener implements Disableable {
-    public int bourneRange = 25;
-    public int compassModifier = 25;
+    public int bourneRange = 15;
+    public int compassModifier = 10;
 
     @EventHandler
     public void onTrack(PlayerTrackEvent event) {
